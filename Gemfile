@@ -5,6 +5,11 @@ ruby "3.2.2"
 
 gem 'rubocop', '>= 1.0', '< 2.0'
 
+gem 'devise'
+gem 'cancancan'
+
+gem 'pg'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.8"
 
