@@ -1,0 +1,9 @@
+<h1>Add a Transaction</h1>
+
+<%= form_with(model: @transaction, url: transactions_path) do |form| %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+
+
+  <%= form.submit "Add Transaction" %>
+<% end %>
