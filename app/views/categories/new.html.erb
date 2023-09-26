@@ -1,8 +1,21 @@
-<h1>Add a Category</h1>
+<%= render '/shared/user_navbar' %>
 
-<%= form_with(model: @category, url: categories_path) do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-
-  <%= form.submit "Add Category" %>
-<% end %>
+<main class="container mx-auto px-5 mt-5 w-full">
+  <%= form_with(model: @category, url: categories_path, method: :post, class: 'w-full') do |f| %>
+    <div class='row'>
+      <div class='col-sm-12'>
+        <div class="form-group">
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: 'Name', class: 'form-control' %>
+        </div>
+      </div>
+      <div class='col-sm-12'>
+        <div class="form-group">
+          <%= f.text_field :icon, autofocus: true, autocomplete: "name", placeholder: 'Add your icon URL here', class: 'form-control' %>
+        </div>
+      </div>
+      <div class='col-sm-12'>
+        <%= f.submit "Add Category", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</main>

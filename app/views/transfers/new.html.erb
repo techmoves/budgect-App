@@ -1,0 +1,26 @@
+<%= render '/shared/user_navbar' %>
+
+<main class="container mx-auto px-5 mt-5 w-full">
+  <%= form_with(model: @entity, url: category_entities_path(params[:category_id]), method: :post) do |f| %>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: 'Name', class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <%= f.text_field :amount, autofocus: true, autocomplete: "name", placeholder: 'Amount', class: 'form-control' %>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="form-group">
+          <%= select_tag "group", options_for_select(@categories.map { |group| [group.name, group.id] }), { prompt: "Select Category", required: true, class: "form-control" } %>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <%= f.submit "Add Transaction", class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</main>
