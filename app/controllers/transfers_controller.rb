@@ -1,8 +1,8 @@
 class TransfersController < ApplicationController
-    # before_action :authenticate_user!
+
   def index
-    # @category = Category.find(params[:category_id])
-    # @transfers = @category.transfers
+    @category = Category.find(params[:category_id])
+    @transfers = @category.transfers
     @categories = current_user.categories.all
   end
 
@@ -16,7 +16,7 @@ class TransfersController < ApplicationController
   def create
     @transfer = Transfer.new(name: transfer_params[:name], amount: transfer_params[:amount], user_id: current_user.id)
     if @transfer.save
-      @categories_transfers = Categoriestransfer.new(category_id: params[:category_id], transfer_id: @transfer.id)
+      @categories_transfers = CategoriesTransfer.new(category_id: params[:category_id], transfer_id: @transfer.id)
       if @categories_transfers.save
         redirect_to category_transfers_path, notice: 'transfer was successfully created.'
       else

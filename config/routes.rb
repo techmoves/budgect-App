@@ -3,11 +3,15 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'transfers/index'
   get 'transfers/new'
-  get 'transactions/new'
   get 'home/index'
   get 'categories/new'
   devise_for :users
 
-  resources :transactions, only: [:index, :new ]
+  resources :categories do
+  resources :transfers 
+  end
 
+  resources :categories, only: %i[:new :create :destroy] do
+      resources :transfers, only: %i[:index :new :create destroy]
+  end  
 end

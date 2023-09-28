@@ -1,2 +1,6 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+
+  <% if current_user && current_user.present?  %>
+  <%= render '/shared/categories' %>
+  <% else %>
+    <%= render '/shared/home'%>
+  <% end %>
