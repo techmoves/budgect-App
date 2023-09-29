@@ -1,6 +1,6 @@
 
   <% if current_user && current_user.present?  %>
-  <%= render '/shared/categories' %>
+<%= render partial: 'shared/categories', locals: { transactions: @transactions } %>
   <% else %>
     <%= render '/shared/home'%>
   <% end %>
