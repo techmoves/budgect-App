@@ -125,7 +125,7 @@ You can deploy this project using:
 
 - Deployed using render: [Live](https://budget-app-03mn.onrender.com/) 
 
-- Presentation: [Video](...)
+- Presentation: [Video](https://www.loom.com/share/ee2a4dd992ac47248bc5f17950b65bdd)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
