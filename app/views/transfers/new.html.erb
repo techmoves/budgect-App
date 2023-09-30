@@ -1,7 +1,8 @@
   <%= render '/shared/user_navbar' %>
 
   <main class="container mx-auto px-5 mt-5">
-    <%= form_with(model: @transfer, url: category_transfers_path(params[:category_id]), method: :post, html: { class: 'needs-validation' }) do |f| %>
+   
+    <%= form_with(model: [@category, @transfer], local: true) do |f| %>
       <div class="row">
         <div class="col-sm-12">
           <div class="form-group">
@@ -13,11 +14,7 @@
             <%= f.text_field :amount, autofocus: true, autocomplete: "name", placeholder: 'Amount', class: 'form-control', required: true %>
           </div>
         </div>
-        <div class="col-sm-12">
-          <div class="form-group">
-            <%= select_tag "group", options_for_select(@categories.map { |group| [group.name, group.id] }), { prompt: "Select Category", required: true, class: "form-control" } %>
-          </div>
-        </div>
+
         <div class="col-sm-12">
           <%= f.submit "Add Transaction", class: "btn btn-primary" %>
         </div>

@@ -1,5 +1,4 @@
 class TransfersController < ApplicationController
-
   def index
     @category = Category.find(params[:category_id])
     @transfers = @category.transfers
@@ -7,27 +6,24 @@ class TransfersController < ApplicationController
   end
 
   def new
-    @transfer = Transfer.new
-    @group = Category.new
-    @categories = current_user.categories.all
+    @category = Category.find(params[:category_id])
+    @transfer = @category.transfers.new
   end
 
-
   def create
-    @transfer = Transfer.new(name: transfer_params[:name], amount: transfer_params[:amount], user_id: current_user.id)
+    @category = Category.find(params[:category_id])
+    @transfer = @category.transfers.new(transfer_params)
+    @transfer.author = current_user
+
     if @transfer.save
-      @categories_transfers = CategoriesTransfer.new(category_id: params[:category_id], transfer_id: @transfer.id)
-      if @categories_transfers.save
-        redirect_to category_transfers_path, notice: 'transfer was successfully created.'
-      else
-        render :new
-      end
+      @category.transfers << @transfer
+      redirect_to category_transfers_path(@category), notice: 'Transfer was successfully created.'
     else
       render :new
     end
   end
 
-  
+
   def destroy
     @category = Category.find(params[:category_id])
     @transfer = @category.entities.find(params[:id])

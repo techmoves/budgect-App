@@ -1,10 +1,11 @@
 class CategoriesController < ApplicationController
   
   def new
+    @category = Category.find(params[:category_id])
    @category = Category.new
   end
 
-    def create
+   def create
     @category = Category.new(name: category_params[:name], icon: category_params[:icon], user_id: current_user.id)
 
     if @category.save
