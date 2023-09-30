@@ -9,5 +9,4 @@ class Ability
     can :destroy, Entity, user_id: user.id
     can :manage, Category, user_id: user.id
   end
-
 end
