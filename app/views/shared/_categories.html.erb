@@ -1,0 +1,96 @@
+<div class="grid content-between h-screen">
+  <div>
+<div class="navbar text-white bg-[#3378C2]">
+  <div class="navbar-start">
+    <%= link_to(root_path, class: "btn btn-ghost normal-case text-xl") do %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <g id="evaArrowIosBackFill0">
+          <g id="evaArrowIosBackFill1">
+            <path id="evaArrowIosBackFill2" fill="currentColor" d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64Z" />
+          </g>
+        </g>
+      </svg>
+    <% end %>
+  </div>
+  <div class="navbar-center">CATEGORIES</div>
+  <div class="navbar-end">
+    <%= button_to destroy_user_session_path, method: :delete do %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <g fill="currentColor">
+          <path d="M12 3.25a.75.75 0 0 1 0 1.5a7.25 7.25 0 0 0 0 14.5a.75.75 0 0 1 0 1.5a8.75 8.75 0 1 1 0-17.5Z" />
+          <path d="M16.47 9.53a.75.75 0 0 1 1.06-1.06l3 3a.75.75 0 0 1 0 1.06l-3 3a.75.75 0 1 1-1.06-1.06l1.72-1.72H10a.75.75 0 0 1 0-1.5h8.19l-1.72-1.72Z" />
+        </g>
+      </svg>
+    <% end %>
+  </div>
+</div>
+
+<div class="flex justify-between w-full shadow text-xl px-5 py-3">
+  <p>Totals</p>
+  <small class="font-bold text-xl">
+    <% credit = 0 %>
+    <% @categories.each do |category| %>
+      <% category.transfers.each do |transaction| %>
+        <% credit += transaction.amount %>
+      <% end %>
+    <% end %>
+    <%= "$#{credit}" %>
+  </small>
+</div>
+  <div>
+      <main class="container mx-auto px-5 mt-5 w-full">
+        <% if @categories.empty? %>
+            <div class="flex -w-full">
+             <h1 class="text-xl text-center bg-red-500 text-dark p-3 w-full">No categories</h1>
+            </div>
+        <% else %>
+          <% @categories.each do |category| %>
+            <div class="flex justify-between shadow-xl p-4 w-full">
+              <div class="flex gap-3 w-full">
+              <div class="avatar">
+                <%= link_to category_transfers_path(category.id) do %>
+                  <div class="w-24 mask mask-squircle">
+                    <img src="<%= category.icon %>" />
+                  </div>
+                <% end %>
+              </div>
+              <div class="grid content-between">
+                <p class="text-xl">
+                  <%= link_to category_transfers_path(category.id) do %>
+                    <%= category.name %>
+                  <% end %>
+                </p>
+                <span class="text-sm">
+                  <%= category.created_at.strftime("%b %d, %Y") %>
+                </span>
+              </div>
+              </div>
+              <div class="flex flex-col justify-between">
+                <p class="font-bold text-xl">
+                  <% sum = 0 %>
+                  <% category.transfers.each do |transaction| %>
+                    <% sum += transaction.amount %>
+                  <% end %>
+                  <%= "$#{sum}" %>
+                </p>
+                <% if can? :destroy, category %>
+                  <%= button_to category_path(category.id), method: :delete, title: "Delete #{category.name.capitalize} category" do %>
+                    <span class="text-sm hover:text-red-600">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="25" height="30" viewBox="0 0 48 48">
+                        <path fill="currentColor" d="M20 10.5v.5h8v-.5a4 4 0 0 0-8 0Zm-2.5.5v-.5a6.5 6.5 0 1 1 13 0v.5h11.25a1.25 1.25 0 1 1 0 2.5h-2.917l-2 23.856A7.25 7.25 0 0 1 29.608 44H18.392a7.25 7.25 0 0 1-7.224-6.644l-2-23.856H6.25a1.25 1.25 0 1 1 0-2.5H17.5Zm4 9.25a1.25 1.25 0 1 0-2.5 0v14.5a1.25 1.25 0 1 0 2.5 0v-14.5ZM27.75 19c-.69 0-1.25.56-1.25 1.25v14.5a1.25 1.25 0 1 0 2.5 0v-14.5c0-.69-.56-1.25-1.25-1.25Z" />
+                      </svg>
+                    </span>
+                  <% end %>
+                <% end %>
+      
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </main>
+  </div>
+</div>
+<div class="flex flex-col text-center justify-end bg-[#5FB523] p-3">
+  <%= link_to 'Add Categories', new_category_path, class: "border border-xl border-white text-white px-8" %>
+</div>
+</div>
