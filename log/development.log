@@ -43430,3 +43430,94 @@ Processing by PagesController#home as HTML
 Completed 200 OK in 1100ms (Views: 967.0ms | ActiveRecord: 1.3ms | Allocations: 12213)
 
 
+Started GET "/" for 127.0.0.1 at 2023-09-30 23:38:16 +0200
+  [1m[36mActiveRecord::SchemaMigration Pluck (49.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  [1m[36mUser Load (37.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pages_controller.rb:5:in `home'
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mCategory Load (56.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1 ORDER BY "categories"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/shared/_categories.html.erb:32
+  [1m[36mEntity Load (107.8ms)[0m  [1m[34mSELECT "entities".* FROM "entities" INNER JOIN "categories_entities" ON "entities"."id" = "categories_entities"."entity_id" WHERE "categories_entities"."category_id" = $1[0m  [["category_id", 2]]
+  ↳ app/views/shared/_categories.html.erb:33
+  Rendered shared/_categories.html.erb (Duration: 2142.4ms | Allocations: 18341)
+  Rendered pages/home.html.erb within layouts/application (Duration: 2179.2ms | Allocations: 18920)
+  Rendered layout layouts/application.html.erb (Duration: 9042.0ms | Allocations: 86623)
+Completed 200 OK in 11001ms (Views: 8914.5ms | ActiveRecord: 317.8ms | Allocations: 103188)
+
+
+Started GET "/" for 127.0.0.1 at 2023-09-30 23:48:08 +0200
+Processing by PagesController#home as */*
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  Rendered shared/_home.html.erb (Duration: 797.6ms | Allocations: 1876)
+  Rendered pages/home.html.erb within layouts/application (Duration: 803.0ms | Allocations: 2111)
+Started GET "/users/sign_in" for 127.0.0.1 at 2023-09-30 23:48:10 +0200
+  Rendered layout layouts/application.html.erb (Duration: 1884.9ms | Allocations: 11766)
+Completed 200 OK in 2366ms (Views: 1973.2ms | ActiveRecord: 0.0ms | Allocations: 12541)
+
+
+Processing by Devise::SessionsController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered shared/_navbar.html.erb (Duration: 983.4ms | Allocations: 484)
+  Rendered devise/shared/_links.html.erb (Duration: 420.2ms | Allocations: 502)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3113.4ms | Allocations: 4831)
+  Rendered layout layouts/application.html.erb (Duration: 3295.5ms | Allocations: 13202)
+Completed 200 OK in 3529ms (Views: 3383.1ms | ActiveRecord: 0.0ms | Allocations: 14632)
+
+
+Started GET "/" for 127.0.0.1 at 2023-09-30 23:48:42 +0200
+Processing by PagesController#home as HTML
+  [1m[36mUser Load (82.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/pages_controller.rb:5:in `home'
+  Rendering layout layouts/application.html.erb
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mCategory Load (32.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."user_id" = $1 ORDER BY "categories"."created_at" DESC[0m  [["user_id", 1]]
+  ↳ app/views/shared/_categories.html.erb:32
+  [1m[36mEntity Load (4.2ms)[0m  [1m[34mSELECT "entities".* FROM "entities" INNER JOIN "categories_entities" ON "entities"."id" = "categories_entities"."entity_id" WHERE "categories_entities"."category_id" = $1[0m  [["category_id", 2]]
+  ↳ app/views/shared/_categories.html.erb:33
+  Rendered shared/_categories.html.erb (Duration: 175.5ms | Allocations: 2385)
+  Rendered pages/home.html.erb within layouts/application (Duration: 176.6ms | Allocations: 2456)
+  Rendered layout layouts/application.html.erb (Duration: 442.8ms | Allocations: 10890)
+Completed 200 OK in 3450ms (Views: 409.8ms | ActiveRecord: 894.0ms | Allocations: 15173)
+
+
+Started GET "/categories/new" for 127.0.0.1 at 2023-09-30 23:52:58 +0200
+Processing by CategoriesController#new as HTML
+Completed 404 Not Found in 217ms (ActiveRecord: 0.0ms | Allocations: 537)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Category without an ID):
+  
+app/controllers/categories_controller.rb:3:in `new'
+Started GET "/categories/new" for 127.0.0.1 at 2023-09-30 23:53:05 +0200
+Processing by CategoriesController#new as HTML
+Completed 404 Not Found in 10ms (ActiveRecord: 0.0ms | Allocations: 514)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Category without an ID):
+  
+app/controllers/categories_controller.rb:3:in `new'
+Started GET "/categories/new" for 127.0.0.1 at 2023-09-30 23:53:13 +0200
+Processing by CategoriesController#new as HTML
+Completed 404 Not Found in 20ms (ActiveRecord: 0.0ms | Allocations: 514)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Category without an ID):
+  
+app/controllers/categories_controller.rb:3:in `new'
+Started GET "/categories/new" for 127.0.0.1 at 2023-10-01 00:00:27 +0200
+Processing by CategoriesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering categories/new.html.erb within layouts/application
+  Rendered shared/_user_navbar.html.erb (Duration: 3149.0ms | Allocations: 696)
+  Rendered categories/new.html.erb within layouts/application (Duration: 3327.5ms | Allocations: 1887)
+  Rendered layout layouts/application.html.erb (Duration: 4317.1ms | Allocations: 25142)
+Completed 200 OK in 8403ms (Views: 4323.7ms | ActiveRecord: 1851.5ms | Allocations: 31711)
+
+
