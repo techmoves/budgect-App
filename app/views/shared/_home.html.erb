@@ -1,9 +1,10 @@
-<div class="container h-screen d-flex align-items-center">
-  <div class="w-100">
-    <h1 class="text-3xl text-center font-italic">Budget APP</h1>
+
+<div class="grid grid-col h-screen w-full items-center ">
+  <div class="w-full">
+    <h1 class="text-3xl text-center italic">Budget APP</h1>
   </div>
-  <div class="flex flex-column justify-end h-100 align-items-end">
-    <%= link_to "LOG IN", new_user_session_path, class: 'btn btn-primary btn-lg w-100 mb-3' %>
-    <%= link_to "SIGN UP", new_user_registration_path, class: 'btn btn-secondary btn-lg w-100' %>
+  <div class="flex flex-col justify-end h-full flex-end w-full flex-end ">
+    <%= link_to "LOG IN", new_user_session_path, class: 'bg-[#3778C2] text-center p-3 text-white w-full' %>
+    <%= link_to  "SIGN UP", new_user_registration_path, class: ' p-3 w-full text-center' %>
   </div>
 </div>

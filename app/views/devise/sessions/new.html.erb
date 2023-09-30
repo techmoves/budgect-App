@@ -1,38 +1,28 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-body">
-          <h2 class="card-title text-center text-secondary">Log in</h2>
-
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form text-secondary mb-2' }) do |f| %>
-            <div class="form-group">
-              <%= f.label :email, class: 'control-label mt-2' %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control mt-2' %>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :password, class: 'control-label mt-2' %>
-              <%= f.password_field :password, autocomplete: "current-password", class: 'form-control mt-2' %>
-            </div>
-
-            <% if devise_mapping.rememberable? %>
-              <div class="form-group">
-                <div class="form-check mt-2">
-                  <%= f.check_box :remember_me, class: 'form-check-input' %>
-                  <%= f.label :remember_me, class: 'form-check-label' %>
-                </div>
-              </div>
-            <% end %>
-
-            <div class="form-group">
-              <%= f.submit "Log in", class: 'btn btn-primary w-100 mt-3' %>
-            </div>
-          <% end %>
+<%= render '/shared/navbar'%>
+<main class="container mx-auto px-5 mt-5 flex w-full">
+<div class="w-full">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="flex flex-col gap-2 w-full">  
+      <div class="field w-full">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: 'border-b border-b-[#d1d1d1] p-3 active:border-none w-full' %>
         </div>
-      </div>
 
-      <%= render "devise/shared/links" %>
+        <div class="field ">
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Password', class: 'border-b border-b-[#d1d1d1] p-3 active:border-none w-full' %>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field ">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          </div>
+        <% end %>
+
+        <div class="actions">
+          <%= f.submit "Log in", class: 'btn btn-primary w-full' %>
+        </div>
+        <%= render "devise/shared/links"%>
     </div>
+    <% end %>
   </div>
-</div>
+</main>

@@ -1,5 +1,9 @@
 class Category < ApplicationRecord
-  belongs_to :author, class_name: 'User', foreign_key: 'author_id'
+  belongs_to :user
+
+  has_many :categories_entities, dependent: :destroy
+  has_many :entities, through: :categories_entities, dependent: :destroy
+
 
   has_many :categories_transfers, dependent: :destroy
   has_many :transfers, through: :categories_transfers, dependent: :destroy
@@ -10,4 +14,8 @@ class Category < ApplicationRecord
   def total_amount
     transfers.sum(:amount)
   end
+
+  validates :name, presence: true
+  validates :icon, presence: true
+
 end
