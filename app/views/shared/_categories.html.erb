@@ -26,11 +26,11 @@
 </div>
 
 <div class="flex justify-between w-full shadow text-xl px-5 py-3">
-  <p>Totals</p>
+  <p>Credit</p>
   <small class="font-bold text-xl">
     <% credit = 0 %>
     <% @categories.each do |category| %>
-      <% category.transfers.each do |transaction| %>
+      <% category.entities.each do |transaction| %>
         <% credit += transaction.amount %>
       <% end %>
     <% end %>
@@ -41,14 +41,14 @@
       <main class="container mx-auto px-5 mt-5 w-full">
         <% if @categories.empty? %>
             <div class="flex -w-full">
-             <h1 class="text-xl text-center bg-red-500 text-dark p-3 w-full">No categories</h1>
+              <h class="text-xl text-center bg-red-500 text-white p-3 w-full">No categories</h>
             </div>
         <% else %>
           <% @categories.each do |category| %>
             <div class="flex justify-between shadow-xl p-4 w-full">
               <div class="flex gap-3 w-full">
               <div class="avatar">
-                <%= link_to category_transfers_path(category.id) do %>
+                <%= link_to category_entities_path(category.id) do %>
                   <div class="w-24 mask mask-squircle">
                     <img src="<%= category.icon %>" />
                   </div>
@@ -56,7 +56,7 @@
               </div>
               <div class="grid content-between">
                 <p class="text-xl">
-                  <%= link_to category_transfers_path(category.id) do %>
+                  <%= link_to category_entities_path(category.id) do %>
                     <%= category.name %>
                   <% end %>
                 </p>
@@ -68,7 +68,7 @@
               <div class="flex flex-col justify-between">
                 <p class="font-bold text-xl">
                   <% sum = 0 %>
-                  <% category.transfers.each do |transaction| %>
+                  <% category.entities.each do |transaction| %>
                     <% sum += transaction.amount %>
                   <% end %>
                   <%= "$#{sum}" %>

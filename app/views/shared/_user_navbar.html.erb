@@ -1,85 +1,85 @@
 <% if devise_mapping = Devise.mappings[:user] && controller_name == 'categories' && action_name == 'new' %>
-  <nav class="navbar navbar-dark bg-primary text-white">
+  <div class="navbar text-white bg-[#3378C2]">
     <div class="navbar-start">
-      <%= link_to(root_path, class: "btn btn-outline-light text-xl") do %>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          <g id="evaArrowIosBackFill0">
-            <g id="evaArrowIosBackFill1">
-              <path id="evaArrowIosBackFill2" fill="currentColor" d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64Z"/>
-            </g>
+      <%= link_to(root_path, class: "btn btn-ghost normal-case text-xl") do %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <g id="evaArrowIosBackFill0">
+          <g id="evaArrowIosBackFill1">
+            <path id="evaArrowIosBackFill2" fill="currentColor" d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64Z"/>
           </g>
-        </svg>
-      <% end %>
+        </g>
+      </svg>
+    <% end %>
     </div>
     <div class="navbar-center">
       ADD CATEGORY
     </div>
     <div class="navbar-end"> 
-      <%= link_to "Next", new_user_registration_path, class: "btn btn-light" %>
+      <%= link_to  "Next", new_user_registration_path %>
     </div>
-  </nav>
+  </div>
 
 <% elsif devise_mapping = Devise.mappings[:user] && controller_name == 'entities' && action_name == 'new'%>
-  <nav class="navbar navbar-dark bg-primary text-white">
+   <div class="navbar text-white bg-[#3378C2]">
     <div class="navbar-start">
-      <%= link_to(root_path, class: "btn btn-outline-light text-xl") do %>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          <g id="evaArrowIosBackFill0">
-            <g id="evaArrowIosBackFill1">
-              <path id="evaArrowIosBackFill2" fill="currentColor" d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64Z"/>
-            </g>
+      <%= link_to(root_path, class: "btn btn-ghost normal-case text-xl") do %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <g id="evaArrowIosBackFill0">
+          <g id="evaArrowIosBackFill1">
+            <path id="evaArrowIosBackFill2" fill="currentColor" d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64Z"/>
           </g>
-        </svg>
-      <% end %>
+        </g>
+      </svg>
+    <% end %>
     </div>
     <div class="navbar-center">
-      TRANSACTION
+      TRANSANCTION
     </div>
     <div class="navbar-end"> 
-      <%= link_to "Next", new_user_registration_path, class: "btn btn-light" %>
+      <%= link_to  "Next", new_user_registration_path %>
     </div>
-  </nav>
+  </div>
 
+  
 <% elsif devise_mapping = Devise.mappings[:user] && controller_name == 'entities' && action_name == 'index'%>
-  <nav class="navbar navbar-dark bg-primary text-white">
+   <div class="navbar text-white bg-[#3378C2]">
     <div class="navbar-start">
-      <%= link_to(root_path, class: "btn btn-outline-light text-xl") do %>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          <g id="evaArrowIosBackFill0">
-            <g id="evaArrowIosBackFill1">
-              <path id="evaArrowIosBackFill2" fill="currentColor" d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64Z"/>
-            </g>
+      <%= link_to(root_path, class: "btn btn-ghost normal-case text-xl") do %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <g id="evaArrowIosBackFill0">
+          <g id="evaArrowIosBackFill1">
+            <path id="evaArrowIosBackFill2" fill="currentColor" d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64Z"/>
           </g>
-        </svg>
-      <% end %>
+        </g>
+      </svg>
+    <% end %>
     </div>
     <div class="navbar-center">
-      TRANSACTION
+      TRANSANCTION
     </div>
     <div class="navbar-end"> 
-      <%= link_to "Next", class: "btn btn-light" %>
+      <%= link_to  "Next" %>
     </div>
-  </nav>
+  </div>
 
-<% elsif devise_mapping = Devise.mappings[:user] && controller_name == 'home' && action_name == 'home'%>
-  <nav class="navbar navbar-dark bg-primary text-white">
+  <% elsif devise_mapping = Devise.mappings[:user] && controller_name == 'home' && action_name == 'home'%>
+   <div class="navbar text-white bg-[#3378C2]">
     <div class="navbar-start">
-      <%= link_to(root_path, class: "btn btn-outline-light text-xl") do %>
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-          <g id="evaArrowIosBackFill0">
-            <g id="evaArrowIosBackFill1">
-              <path id="evaArrowIosBackFill2" fill="currentColor" d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64Z"/>
-            </g>
+      <%= link_to(root_path, class: "btn btn-ghost normal-case text-xl") do %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <g id="evaArrowIosBackFill0">
+          <g id="evaArrowIosBackFill1">
+            <path id="evaArrowIosBackFill2" fill="currentColor" d="M13.83 19a1 1 0 0 1-.78-.37l-4.83-6a1 1 0 0 1 0-1.27l5-6a1 1 0 0 1 1.54 1.28L10.29 12l4.32 5.36a1 1 0 0 1-.78 1.64Z"/>
           </g>
-        </svg>
-      <% end %>
+        </g>
+      </svg>
+    <% end %>
     </div>
     <div class="navbar-center">
-      TRANSACTION
+      TRANSANCTION
     </div>
     <div class="navbar-end"> 
-      <%= link_to "Next", class: "btn btn-light" %>
+      <%= link_to  "Next" %>
     </div>
-  </nav>
-
-<% end %>
+  </div>
+<%end%>

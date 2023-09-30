@@ -1,44 +1,32 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card">
-        <div class="card-body">
-          <h2 class="card-title text-center">Sign up</h2>
+<%= render '/shared/navbar'%>
+<main class="container mx-auto  mt-5 px-5 flex -full">
+  <div class="grid grid-col w-full">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="flex flex-col gap-2">
 
-          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form' }) do |f| %>
-            <%= render "devise/shared/error_messages", resource: resource %>
-
-          <div class="form-group">
-            <%= f.label :name, class: 'control-label' %>
-            <%= f.text_field :name, autofocus: true, class: 'form-control' %>
-          </div>
-
-            <div class="form-group">
-              <%= f.label :email %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :password %>
-              <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
-              <% end %>
-              <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :password_confirmation %>
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
-            </div>
-
-            <div class="form-group">
-              <%= f.submit "Sign up", class: 'btn btn-primary w-100' %>
-            </div>
-          <% end %>
+        <div class="field  w-full">
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: 'Name', class: 'border-b border-b-[#d1d1d1] p-3 focus:outline-none w-full' %>
         </div>
-      </div>
 
-      <%= render "devise/shared/links" %>
+        <div class="field  w-full">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Email', class: 'border-b border-b-[#d1d1d1] p-3 focus:outline-none  w-full' %>
+        </div>
+
+        <div class=" w-full">
+          <%= f.password_field :password, autocomplete: "new-password", placeholder: 'Password', class: 'border-b border-b-[#d1d1d1] p-3 focus:outline-none  w-full' %>
+        </div>
+
+        <div class="field  w-full">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: 'Confirmation password', class: 'border-b border-b-[#d1d1d1] p-3  focus:outline-none w-full' %>
+        </div>
+        <br>
+        <div class="actions">        
+          <%= f.submit "Sign up", class: 'btn  btn-primary w-full' %>
+        </div>
+      <% end %>
     </div>
+    <br>
+    <%= render "devise/shared/links" %>
   </div>
-</div>
+</main>

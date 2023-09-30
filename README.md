@@ -123,7 +123,7 @@ rspec spec
 
 You can deploy this project using:
 
-- Deployed using render: [Live](.....) 
+- Deployed using render: [Live](https://budget-app-03mn.onrender.com/) 
 
 - Presentation: [Video](...)
 
