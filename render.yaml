@@ -1,0 +1,18 @@
+databases:
+  - name: budge-app
+    databaseName: budge_app
+    user: budge_app_user
+
+services:
+  - type: web
+    name: budget-app
+    runtime: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: budge_app
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false

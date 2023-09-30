@@ -1,0 +1,55 @@
+<div class="flex flex-col justify-between h-screen">
+  <div>
+    <div>
+    <%= render '/shared/user_navbar'%>
+    <div class="flex justify-between w-full shadow px-5 py-3">
+      <p>Credit</p>
+      <small>
+        <% credit = 0 %> <% @categories.each do |category| %> <%
+        category.entities.each do |transaction| %> <% credit +=
+        transaction.amount %> <% end %> <% end %> <%= "$#{credit}" %>
+      </small>
+    </div>
+    <main class="container mx-auto px-5 mt-5 w-full">
+      <% if @entities.empty? %>
+      <h1 class="text-center p-3 bg-red-500 text-white shadow-xl">
+        No Transanction
+      </h1>
+      <%else%> <%@entities.each do |entity|%>
+      <div class="flex justify-between shadow-xl p-4">
+        <div class="grid content-between">
+          <p class=""><%= entity.name %></p>
+          <span class="text-sm"
+            ><%= entity.created_at.strftime("%b %d, %Y") %></span
+          >
+        </div>
+        <div class="grid content-between">
+          <p class="font-bold text-xl"><%= entity.amount %></p>
+          <% if can? :destroy, entity %> <%= button_to category_entity_path(
+          @category.id, entity.id), method: :delete do %>
+
+          <span class="text-sm hover:text-red-600">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="30"
+              viewBox="0 0 48 48"
+            >
+              <path
+                fill="currentColor"
+                d="M20 10.5v.5h8v-.5a4 4 0 0 0-8 0Zm-2.5.5v-.5a6.5 6.5 0 1 1 13 0v.5h11.25a1.25 1.25 0 1 1 0 2.5h-2.917l-2 23.856A7.25 7.25 0 0 1 29.608 44H18.392a7.25 7.25 0 0 1-7.224-6.644l-2-23.856H6.25a1.25 1.25 0 1 1 0-2.5H17.5Zm4 9.25a1.25 1.25 0 1 0-2.5 0v14.5a1.25 1.25 0 1 0 2.5 0v-14.5ZM27.75 19c-.69 0-1.25.56-1.25 1.25v14.5a1.25 1.25 0 1 0 2.5 0v-14.5c0-.69-.56-1.25-1.25-1.25Z"
+              />
+            </svg>
+          </span>
+          <% end %> <% end %>
+        </div>
+      </div>
+      <%end%> <%end%>
+    </main>
+  </div>
+  </div>
+  <div class="flex text-center justify-center bg-[#5FB523] p-3">
+    <%= link_to 'ADD TRANSANCTION', new_category_entity_path, class:"border
+    border-xl border-white text-white px-8"%>
+  </div>
+</div>

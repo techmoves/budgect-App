@@ -10,39 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_28_112747) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_07_193618) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "icon"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "author_id", null: false
-    t.integer "user_id"
-    t.index ["author_id"], name: "index_categories_on_author_id"
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
-  create_table "categories_transfers", force: :cascade do |t|
+  create_table "categories_entities", force: :cascade do |t|
     t.bigint "category_id", null: false
-    t.bigint "transfer_id", null: false
+    t.bigint "entity_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_categories_transfers_on_category_id"
-    t.index ["transfer_id"], name: "index_categories_transfers_on_transfer_id"
+    t.index ["category_id"], name: "index_categories_entities_on_category_id"
+    t.index ["entity_id"], name: "index_categories_entities_on_entity_id"
   end
 
-  create_table "transfers", force: :cascade do |t|
+  create_table "entities", force: :cascade do |t|
     t.string "name"
-    t.decimal "amount"
+    t.integer "amount"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "author_id", null: false
-    t.index ["author_id"], name: "index_transfers_on_author_id"
+    t.index ["user_id"], name: "index_entities_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -50,13 +50,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_28_112747) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "categories", "users", column: "author_id"
-  add_foreign_key "categories_transfers", "categories"
-  add_foreign_key "categories_transfers", "transfers"
-  add_foreign_key "transfers", "users", column: "author_id"
+  add_foreign_key "categories", "users"
+  add_foreign_key "categories_entities", "categories"
+  add_foreign_key "categories_entities", "entities"
+  add_foreign_key "entities", "users"
 end
