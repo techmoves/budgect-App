@@ -23,7 +23,6 @@ class TransfersController < ApplicationController
     end
   end
 
-
   def destroy
     @category = Category.find(params[:category_id])
     @transfer = @category.entities.find(params[:id])
@@ -31,10 +30,9 @@ class TransfersController < ApplicationController
     redirect_to category_transfers_path(@category)
   end
 
-    private
+  private
 
   def transfer_params
     params.require(:transfer).permit(:name, :amount)
   end
-
 end
