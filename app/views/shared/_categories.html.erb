@@ -26,7 +26,7 @@
 </div>
 
 <div class="flex justify-between w-full shadow text-xl px-5 py-3">
-  <p>Credit</p>
+  <p>Totals</p>
   <small class="font-bold text-xl">
     <% credit = 0 %>
     <% @categories.each do |category| %>
@@ -41,7 +41,7 @@
       <main class="container mx-auto px-5 mt-5 w-full">
         <% if @categories.empty? %>
             <div class="flex -w-full">
-              <h class="text-xl text-center bg-red-500 text-dark p-3 w-full">No categories</h>
+             <h1 class="text-xl text-center bg-red-500 text-dark p-3 w-full">No categories</h1>
             </div>
         <% else %>
           <% @categories.each do |category| %>
