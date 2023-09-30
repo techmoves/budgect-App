@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,3 +14,9 @@
  *= require_tree .
  *= require_self
  */
+=======
+body {
+  background-color: aliceblue;
+  font-family: Proxima Nova Light, sans-serif;
+}
+>>>>>>> 4ebd67d756dda4175a4f00203d23dd86d7f16f22
